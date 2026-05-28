@@ -2,7 +2,7 @@ import { ErrorRequestHandler } from 'express';
 import config from '../config/index.js';
 
 const sendErrorDev: ErrorRequestHandler = (err, _req, res, _next) => {
-  return res.status(err.statusCode).send({
+  return res.status(err.statusCode).json({
     status: err.status,
     message: err.message,
     error: err,
@@ -12,12 +12,12 @@ const sendErrorDev: ErrorRequestHandler = (err, _req, res, _next) => {
 
 const sendErrorProd: ErrorRequestHandler = (err, _req, res, _next) => {
   if (err.isOperational) {
-    return res.status(err.statusCode).send({
+    return res.status(err.statusCode).json({
       status: err.status,
       message: err.message,
     });
   } else {
-    return res.status(err.statusCode).send({
+    return res.status(err.statusCode).json({
       status: err.status,
       message: 'Internal Server Error',
     });
@@ -27,7 +27,7 @@ const sendErrorProd: ErrorRequestHandler = (err, _req, res, _next) => {
 const ErrorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
-
+  console.log('sdfsdfdfd', err);
   if (config.nodeEnv === 'production') {
     sendErrorProd(err, req, res, next);
   } else {
