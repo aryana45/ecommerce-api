@@ -23,10 +23,10 @@ async function main() {
       console.log(`App listening on port ${PORT}`);
     });
 
-    server.on('error', (err: NodeJS.ErrnoException) => {
-      console.error('Server error:', err);
-      process.exit(1);
-    });
+    // server.on('error', (err: NodeJS.ErrnoException) => {
+    //   console.error('Server error:', err);
+    //   process.exit(1);
+    // });
 
     async function shutdown(signal: string) {
       console.log(`${signal} received, shutting down...`);

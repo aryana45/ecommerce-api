@@ -27,7 +27,7 @@ const sendErrorProd: ErrorRequestHandler = (err, _req, res, _next) => {
 const ErrorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
-  console.log('sdfsdfdfd', err);
+  console.log(err);
   if (config.nodeEnv === 'production') {
     sendErrorProd(err, req, res, next);
   } else {
