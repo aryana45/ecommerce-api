@@ -26,6 +26,17 @@ model User {
   photo String?
   role  Role @default(BUYER)
   address String?
+  refreshTokens RefreshToken[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RefreshToken {
+  id String @id @default(uuid())
+  tokenHash String @unique
+  userId String
+  user User @relation(fields: [userId],references: [id])
+  expiry DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

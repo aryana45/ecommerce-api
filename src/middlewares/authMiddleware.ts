@@ -1,6 +1,5 @@
 import prisma from '../lib/prisma.js';
 import { verifyToken } from '../services/authService.js';
-import { createUserInput } from '../types/types.js';
 import AppError from '../utils/appError.js';
 import catchAsync from '../utils/catchAsync.js';
 
@@ -14,6 +13,15 @@ export const protect = catchAsync(async (req, res, next) => {
     return next(new AppError('The authoziation token is missing', 401));
   }
   const decoded = await verifyToken(token);
+  console.log(decoded);
+  const currentTime = Date.now();
+  const expTime = decoded.exp ?? 0 * 1000;
+  if (currentTime > expTime) {
+    return next(
+      new AppError('The token has been expired. Please login again', 401)
+    );
+  }
+
   const user = await prisma.user.findUnique({
     where: { id: decoded.id },
   });
