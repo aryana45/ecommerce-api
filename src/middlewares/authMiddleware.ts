@@ -13,13 +13,11 @@ export const protect = catchAsync(async (req, res, next) => {
     return next(new AppError('The authoziation token is missing', 401));
   }
   const decoded = await verifyToken(token);
-  console.log(decoded);
+  // console.log(decoded);
   const currentTime = Date.now();
-  const expTime = decoded.exp ?? 0 * 1000;
+  const expTime = (decoded.exp ?? 0) * 1000;
   if (currentTime > expTime) {
-    return next(
-      new AppError('The token has been expired. Please login again', 401)
-    );
+    return next(new AppError('The access token has been expired', 401));
   }
 
   const user = await prisma.user.findUnique({
