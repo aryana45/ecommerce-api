@@ -14,11 +14,12 @@ export const protect = catchAsync(async (req, res, next) => {
   }
   const decoded = await verifyToken(token);
   // console.log(decoded);
-  const currentTime = Date.now();
-  const expTime = (decoded.exp ?? 0) * 1000;
-  if (currentTime > expTime) {
-    return next(new AppError('The access token has been expired', 401));
-  }
+  
+  // const currentTime = Date.now();
+  // const expTime = (decoded.exp ?? 0) * 1000;
+  // if (currentTime > expTime) {
+  //   return next(new AppError('The access token has been expired', 401));
+  // }  Global Error Handler handles expiry error
 
   const user = await prisma.user.findUnique({
     where: { id: decoded.id },
