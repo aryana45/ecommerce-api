@@ -16,4 +16,4 @@ router.post('/register', validateRequest(createUserSchema), registerUser);
 router.post('/login', loggedInUser);
 router.get('/me', protect, getMe);
 router.post('/refresh-token', handleRefreshTokenRefresh);
-router.post('/logout',logout)
+router.post('/logout', logout);

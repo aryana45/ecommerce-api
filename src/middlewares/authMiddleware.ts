@@ -1,3 +1,4 @@
+import { RequestHandler } from 'express';
 import prisma from '../lib/prisma.js';
 import { verifyToken } from '../services/authService.js';
 import AppError from '../utils/appError.js';
@@ -14,7 +15,7 @@ export const protect = catchAsync(async (req, res, next) => {
   }
   const decoded = await verifyToken(token);
   // console.log(decoded);
-  
+
   // const currentTime = Date.now();
   // const expTime = (decoded.exp ?? 0) * 1000;
   // if (currentTime > expTime) {
@@ -30,3 +31,14 @@ export const protect = catchAsync(async (req, res, next) => {
   req.user = user;
   next();
 });
+
+export const restrictTo = (roles: string[]): RequestHandler => {
+  return catchAsync(async (req, res, next) => {
+    if (!roles.includes(req.user!.role)) {
+      return next(
+        new AppError("You don't have permission to perform this action", 403)
+      );
+    }
+    next();
+  });
+};

@@ -16,7 +16,7 @@ export const registerUser = catchAsync(async (req, res, next) => {
 
 export const loggedInUser = catchAsync(async (req, res, next) => {
   const { token, user } = await authService.loginUser(req.body);
- await createSendRefreshToken(user.id, res);
+  await createSendRefreshToken(user.id, res);
   const { password, ...rest } = user;
 
   return res.status(200).json({

@@ -7,7 +7,6 @@ export const createUserSchema = z.object({
       email: z.email(),
       password: z.string().trim().min(8),
       passwordConfirm: z.string().trim().min(8),
-      role: z.enum(['SELLER', 'BUYER']).optional(),
       address: z.string().trim().optional(),
     })
     .strict()
@@ -23,3 +22,12 @@ export const createUserSchema = z.object({
 //     password: z.string().trim().min(8),
 //   }),
 // });
+
+export const updateUserSchema = z.object({
+  body: z
+    .object({
+      name: z.string().trim().min(2),
+      address: z.string().trim().optional(),
+    })
+    .strict(),
+});

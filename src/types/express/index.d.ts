@@ -1,9 +1,10 @@
-import { User } from '../../generated/prisma/index.js';
+import { SellerProfile, User } from '../../generated/prisma/index.js';
 
 declare global {
   namespace Express {
     interface Request {
       user?: User;
+      sellerProfile?: SellerProfile;
     }
   }
 }
