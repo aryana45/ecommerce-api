@@ -3,6 +3,7 @@ import ErrorMiddleware from './middlewares/errorMiddleware.js';
 import cookieParser from 'cookie-parser';
 import { router as UserRouter } from './routes/userRoutes.js';
 import { router as SellerRouter } from './routes/sellerRoutes.js';
+import AppError from './utils/appError.js';
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,9 @@ app.get('/hcheck', (_req, res) => {
 
 app.use('/api/v1/users', UserRouter);
 app.use('/api/v1/sellers', SellerRouter);
+app.use((req, _res, next) => {
+  next(new AppError(`Can't find ${req.method} ${req.originalUrl}`, 404));
+});
 app.use(ErrorMiddleware);
 
 export default app;

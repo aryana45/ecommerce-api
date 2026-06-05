@@ -54,4 +54,27 @@ model SellerProfile {
   status Status @default(PENDING)
   userId  String @unique
   user User @relation(fields: [userId],references: [id])
+  products Product[]
+}
+
+model Category {
+ id String @id @default(uuid())
+ name String @unique
+
+ products Product[]
+}
+
+model Product {
+  id String @id @default(uuid())
+  productName String
+  productDescription String?
+  categoryId String
+  category Category @relation(fields:[categoryId],references:[id])
+  price Decimal
+  stock Int
+  sellerId String
+  images String[]
+   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  seller SellerProfile @relation(fields: [sellerId],references: [id])
 }

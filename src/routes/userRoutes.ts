@@ -8,12 +8,12 @@ import {
 import { validateRequest } from '../middlewares/validationMiddleware.js';
 import { createUserSchema } from '../validations/userValidation.js';
 import { protect } from '../middlewares/authMiddleware.js';
-import { getMe } from '../controllers/userController.js';
+import { getMe, getUser } from '../controllers/userController.js';
 
 export const router = express.Router();
 
 router.post('/register', validateRequest(createUserSchema), registerUser);
 router.post('/login', loggedInUser);
-router.get('/me', protect, getMe);
+router.get('/me', protect, getMe, getUser);
 router.post('/refresh-token', handleRefreshTokenRefresh);
 router.post('/logout', logout);

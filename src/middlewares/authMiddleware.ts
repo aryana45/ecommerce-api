@@ -4,14 +4,14 @@ import { verifyToken } from '../services/authService.js';
 import AppError from '../utils/appError.js';
 import catchAsync from '../utils/catchAsync.js';
 
-export const protect = catchAsync(async (req, res, next) => {
+export const protect = catchAsync(async (req, _res, next) => {
   let token = '';
   const authorizationToken = req.headers.authorization;
   if (authorizationToken && authorizationToken.startsWith('Bearer')) {
     token = authorizationToken.split(' ')[1];
   }
   if (!token) {
-    return next(new AppError('The authoziation token is missing', 401));
+    return next(new AppError('User not authenticated', 401));
   }
   const decoded = await verifyToken(token);
   // console.log(decoded);
@@ -33,7 +33,7 @@ export const protect = catchAsync(async (req, res, next) => {
 });
 
 export const restrictTo = (roles: string[]): RequestHandler => {
-  return catchAsync(async (req, res, next) => {
+  return catchAsync(async (req, _res, next) => {
     if (!roles.includes(req.user!.role)) {
       return next(
         new AppError("You don't have permission to perform this action", 403)

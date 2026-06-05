@@ -4,7 +4,7 @@ import catchAsync from '../utils/catchAsync.js';
 import { Response } from 'express';
 import AppError from '../utils/appError.js';
 
-export const registerUser = catchAsync(async (req, res, next) => {
+export const registerUser = catchAsync(async (req, res) => {
   const { token, user } = await authService.createUser(req.body);
   const { password, ...rest } = user;
   return res.status(201).json({
@@ -14,7 +14,7 @@ export const registerUser = catchAsync(async (req, res, next) => {
   });
 });
 
-export const loggedInUser = catchAsync(async (req, res, next) => {
+export const loggedInUser = catchAsync(async (req, res) => {
   const { token, user } = await authService.loginUser(req.body);
   await createSendRefreshToken(user.id, res);
   const { password, ...rest } = user;
@@ -53,7 +53,7 @@ export const handleRefreshTokenRefresh = catchAsync(async (req, res, next) => {
   });
 });
 
-export const logout = catchAsync(async (req, res, next) => {
+export const logout = catchAsync(async (req, res, _next) => {
   if (!req.cookies.refreshToken) {
     await authService.logout(req.cookies.refreshToken);
   }

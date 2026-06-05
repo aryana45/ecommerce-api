@@ -8,3 +8,11 @@ export const updateMe = async (payload: createUserInput, id: string) => {
   });
   return user;
 };
+
+export const getUser = async (id: string) => {
+  const user = await prisma.user.findUnique({
+    where: { id },
+    include: { sellerProfile: true },
+  });
+  return user;
+};

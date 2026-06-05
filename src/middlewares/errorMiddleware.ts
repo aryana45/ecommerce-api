@@ -5,7 +5,7 @@ import { Prisma } from '../generated/prisma/index.js';
 import AppError from '../utils/appError.js';
 
 const handlePrismaValidationError = (
-  err: Prisma.PrismaClientValidationError
+  _err: Prisma.PrismaClientValidationError
 ): AppError => {
   return new AppError('Invalid input data. Please check your request.', 400);
 };
@@ -39,7 +39,7 @@ const handlePrismaKnownError = (
 };
 
 const handlePrismaInitializationError = (
-  err: Prisma.PrismaClientInitializationError
+  _err: Prisma.PrismaClientInitializationError
 ): AppError => {
   return new AppError(
     'Database connection failed. Please try again later.',
@@ -48,7 +48,7 @@ const handlePrismaInitializationError = (
 };
 
 const handlePrismaRustPanicError = (
-  err: Prisma.PrismaClientRustPanicError
+  _err: Prisma.PrismaClientRustPanicError
 ): AppError => {
   return new AppError(
     'Critical database error occurred. Please try again.',

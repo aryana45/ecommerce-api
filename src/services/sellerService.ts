@@ -1,6 +1,10 @@
 import prisma from '../lib/prisma.js';
+import { Prisma } from '../generated/prisma/index.js';
 import { createSellerInput } from '../types/types.js';
+import { ApiFeatures } from '../utils/apiFeatures.js';
 import AppError from '../utils/appError.js';
+
+type FindManyArgs = Prisma.SellerProfileFindManyArgs;
 
 export const addSeller = async (payload: createSellerInput, userId: string) => {
   const seller = await prisma.sellerProfile.create({
@@ -40,4 +44,26 @@ export const updateSellerStatus = async (
     data: { status: status },
   });
   return updatedSeller;
+};
+
+export const getSeller = async (reqQuery: Record<string, unknown>) => {
+  const query = new ApiFeatures(reqQuery)
+    .filter()
+    .sort()
+    .limitFields()
+    .pagination()
+    .build();
+
+  const sellers = await prisma.sellerProfile.findMany(
+    query as Prisma.SellerProfileFindManyArgs
+  );
+  return sellers;
+};
+
+export const getOneSeller = async (id: string) => {
+  const seller = await prisma.sellerProfile.findUnique({
+    where: { id },
+    select: { storeDescription: true, storeName: true },
+  });
+  return seller;
 };
