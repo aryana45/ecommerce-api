@@ -54,9 +54,7 @@ export const getSeller = async (reqQuery: Record<string, unknown>) => {
     .pagination()
     .build();
 
-  const sellers = await prisma.sellerProfile.findMany(
-    query as Prisma.SellerProfileFindManyArgs
-  );
+  const sellers = await prisma.sellerProfile.findMany(query as FindManyArgs);
   return sellers;
 };
 

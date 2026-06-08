@@ -35,6 +35,7 @@ export const getSeller = catchAsync(async (req, res, next) => {
   const sellers = await sellerService.getSeller(req.query);
   res.status(200).json({
     status: 'success',
+    total: sellers.length,
     data: { sellers },
   });
 });
