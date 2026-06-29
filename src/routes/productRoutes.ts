@@ -10,7 +10,10 @@ import {
   deleteProduct,
   getProduct,
   getProducts,
+  resizeImageSize,
   updateProduct,
+  uploadProductImages,
+  uploadToCloudinary,
 } from '../controllers/productController.js';
 import { validateRequest } from '../middlewares/validationMiddleware.js';
 import {
@@ -23,10 +26,24 @@ export const router = express.Router();
 router
   .route('/')
   .get(getProducts)
-  .post(protectSeller, validateRequest(createProductSchema), createProduct);
+  .post(
+    protectSeller,
+    uploadProductImages,
+    resizeImageSize,
+    uploadToCloudinary,
+    validateRequest(createProductSchema),
+    createProduct
+  );
 
 router
   .route('/:id')
   .get(getProduct)
-  .patch(protectSeller, validateRequest(updateProductSchema), updateProduct)
+  .patch(
+    protectSeller,
+    uploadProductImages,
+    resizeImageSize,
+    uploadToCloudinary,
+    validateRequest(updateProductSchema),
+    updateProduct
+  )
   .delete(protectSeller, deleteProduct);

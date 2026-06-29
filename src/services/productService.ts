@@ -11,7 +11,10 @@ export const createProduct = async (
   sellerId: string
 ) => {
   const product = await prisma.product.create({
-    data: { ...payload, sellerId: sellerId },
+    data: {
+      ...payload,
+      sellerId: sellerId,
+    },
   });
   return product;
 };

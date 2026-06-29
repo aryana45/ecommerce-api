@@ -5,8 +5,9 @@ export const createProductSchema = z.object({
       productName: z.string().trim().min(2),
       productDescription: z.string().trim().min(2).optional(),
       categoryId: z.uuid(),
-      price: z.number().positive(),
-      stock: z.int().min(1),
+      price: z.coerce.number().positive(),
+      stock: z.coerce.number().int().min(1),
+      images: z.array(z.string()).optional(),
     })
     .strict(),
 });
@@ -17,8 +18,9 @@ export const updateProductSchema = z.object({
       productName: z.string().trim().min(2).optional(),
       productDescription: z.string().trim().min(2).optional(),
       categoryId: z.uuid().optional(),
-      price: z.number().positive().optional(),
-      stock: z.int().min(0).optional(),
+      price: z.coerce.number().positive().optional(),
+      stock: z.coerce.number().int().min(1).optional(),
+      images: z.array(z.string()).optional(),
     })
     .strict(),
 });
