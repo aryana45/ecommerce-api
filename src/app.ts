@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import { router as UserRouter } from './routes/userRoutes.js';
 import { router as SellerRouter } from './routes/sellerRoutes.js';
 import { router as ProductRouter } from './routes/productRoutes.js';
+import { router as CategoryRouter } from './routes/categoryRoutes.js';
 import AppError from './utils/appError.js';
 
 const app = express();
@@ -19,6 +20,8 @@ app.get('/hcheck', (_req, res) => {
 app.use('/api/v1/users', UserRouter);
 app.use('/api/v1/sellers', SellerRouter);
 app.use('/api/v1/products', ProductRouter);
+app.use('/api/v1/category', CategoryRouter);
+
 app.use((req, _res, next) => {
   next(new AppError(`Can't find ${req.method} ${req.originalUrl}`, 404));
 });

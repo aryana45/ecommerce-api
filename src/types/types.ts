@@ -2,7 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 import * as z from 'zod';
 import { createUserSchema } from '../validations/userValidation.js';
 import { createSellerSchema } from '../validations/sellerValidation.js';
-import { createProductSchema } from '../validations/productValidation.js';
+import {
+  createProductSchema,
+  updateProductSchema,
+} from '../validations/productValidation.js';
+import { createCategorySchema } from '../validations/categoryValidation.js';
 
 export type middlewareFn = (
   req: Request,
@@ -17,4 +21,5 @@ export interface SellerParams {
 export type createUserInput = z.infer<typeof createUserSchema>['body'];
 export type createSellerInput = z.infer<typeof createSellerSchema>['body'];
 export type createProductInput = z.infer<typeof createProductSchema>['body'];
-export type updateProductInput = z.infer<typeof createProductSchema>['body'];
+export type updateProductInput = z.infer<typeof updateProductSchema>['body'];
+export type createCategoryInput = z.infer<typeof createCategorySchema>['body'];
