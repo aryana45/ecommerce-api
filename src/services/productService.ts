@@ -26,6 +26,29 @@ export const getProducts = async (reqQuery: Record<string, unknown>) => {
     .limitFields()
     .pagination()
     .build();
+  if (reqQuery.cursorCreatedAt) {
+    query.where = {
+      ...query.where,
+      OR: [
+        {
+          createdAt: {
+            lt: reqQuery.cursorCreatedAt,
+          },
+        },
+        {
+          createdAt: reqQuery.cursorCreatedAt,
+          id: {
+            lt: reqQuery.cursorId,
+          },
+        },
+      ],
+    };
+  }
+  query.orderBy = [
+    ...(query.orderBy as Record<string, 'asc' | 'desc'>[]),
+    { id: 'desc' },
+  ];
+  // console.log(query);
   const products = await prisma.product.findMany(query as FindManyArgs);
   return products;
 };

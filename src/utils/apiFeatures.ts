@@ -25,7 +25,14 @@ export class ApiFeatures {
 
   filter(): this {
     const queryObj = { ...this.reqQuery };
-    const excludedFields = ['sort', 'limit', 'page', 'fields'];
+    const excludedFields = [
+      'sort',
+      'limit',
+      'page',
+      'fields',
+      'cursorCreatedAt',
+      'cursorId',
+    ];
     excludedFields.forEach((field) => delete queryObj[field]);
 
     const where: Record<string, unknown> = {};
@@ -52,6 +59,8 @@ export class ApiFeatures {
             ? { [field.substring(1)]: 'desc' as const }
             : { [field]: 'asc' as const }
         );
+    } else {
+      this.query.orderBy = [{ createdAt: 'desc' }];
     }
     return this;
   }

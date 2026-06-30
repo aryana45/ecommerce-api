@@ -78,4 +78,5 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   seller SellerProfile @relation(fields: [sellerId],references: [id])
+  @@index([createdAt,id])
 }
