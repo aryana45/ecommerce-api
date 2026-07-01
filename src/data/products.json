@@ -1,0 +1,122 @@
+[
+  {
+    "productName": "Wireless Mouse",
+    "productDescription": "Ergonomic wireless mouse",
+    "category": "Electronics",
+    "seller": "Tech World",
+    "price": 799,
+    "stock": 50
+  },
+  {
+    "productName": "Mechanical Keyboard",
+    "productDescription": "RGB mechanical keyboard",
+    "category": "Electronics",
+    "seller": "Tech World",
+    "price": 3499,
+    "stock": 25
+  },
+  {
+    "productName": "Bluetooth Speaker",
+    "productDescription": "Portable speaker with deep bass",
+    "category": "Electronics",
+    "seller": "Tech World",
+    "price": 2499,
+    "stock": 30
+  },
+  {
+    "productName": "Clean Code",
+    "productDescription": "Programming best practices",
+    "category": "Books",
+    "seller": "Book Haven",
+    "price": 699,
+    "stock": 40
+  },
+  {
+    "productName": "Atomic Habits",
+    "productDescription": "Self improvement bestseller",
+    "category": "Books",
+    "seller": "Book Haven",
+    "price": 499,
+    "stock": 60
+  },
+  {
+    "productName": "The Pragmatic Programmer",
+    "productDescription": "Classic software engineering book",
+    "category": "Books",
+    "seller": "Book Haven",
+    "price": 899,
+    "stock": 35
+  },
+  {
+    "productName": "Men's Hoodie",
+    "productDescription": "Cotton winter hoodie",
+    "category": "Fashion",
+    "seller": "Fashion Hub",
+    "price": 1499,
+    "stock": 20
+  },
+  {
+    "productName": "Women's Handbag",
+    "productDescription": "Premium leather handbag",
+    "category": "Fashion",
+    "seller": "Fashion Hub",
+    "price": 2299,
+    "stock": 18
+  },
+  {
+    "productName": "Running Shoes",
+    "productDescription": "Comfortable running shoes",
+    "category": "Fashion",
+    "seller": "Fashion Hub",
+    "price": 2999,
+    "stock": 28
+  },
+  {
+    "productName": "Non-stick Frying Pan",
+    "productDescription": "28 cm non-stick pan",
+    "category": "Home & Kitchen",
+    "seller": "Tech World",
+    "price": 999,
+    "stock": 22
+  },
+  {
+    "productName": "Electric Kettle",
+    "productDescription": "1.5L stainless steel kettle",
+    "category": "Home & Kitchen",
+    "seller": "Tech World",
+    "price": 1599,
+    "stock": 27
+  },
+  {
+    "productName": "Vacuum Cleaner",
+    "productDescription": "Powerful home vacuum cleaner",
+    "category": "Home & Kitchen",
+    "seller": "Tech World",
+    "price": 5999,
+    "stock": 10
+  },
+  {
+    "productName": "Football",
+    "productDescription": "Professional size 5 football",
+    "category": "Sports",
+    "seller": "Sports Arena",
+    "price": 899,
+    "stock": 45
+  },
+  {
+    "productName": "Yoga Mat",
+    "productDescription": "6 mm anti-slip yoga mat",
+    "category": "Sports",
+    "seller": "Sports Arena",
+    "price": 1199,
+    "stock": 32
+  },
+  {
+    "productName": "Cricket Bat",
+    "productDescription": "English willow cricket bat",
+    "category": "Sports",
+    "seller": "Sports Arena",
+    "price": 3999,
+    "stock": 12
+  }
+]

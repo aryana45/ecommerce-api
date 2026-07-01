@@ -1,0 +1,26 @@
+[
+  {
+    "userEmail": "seller1@example.com",
+    "storeName": "Tech World",
+    "storeDescription": "Latest electronics and gadgets at affordable prices.",
+    "status": "APPROVED"
+  },
+  {
+    "userEmail": "seller2@example.com",
+    "storeName": "Book Haven",
+    "storeDescription": "Your destination for fiction, non-fiction, and educational books.",
+    "status": "APPROVED"
+  },
+  {
+    "userEmail": "seller3@example.com",
+    "storeName": "Fashion Hub",
+    "storeDescription": "Trendy clothing and accessories for men and women.",
+    "status": "APPROVED"
+  },
+  {
+    "userEmail": "seller4@example.com",
+    "storeName": "Sports Arena",
+    "storeDescription": "Everything you need for sports, fitness, and outdoor activities.",
+    "status": "APPROVED"
+  }
+]

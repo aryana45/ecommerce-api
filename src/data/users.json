@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Admin",
+    "email": "admin@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "ADMIN"
+  },
+  {
+    "name": "John Buyer",
+    "email": "buyer1@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Alice Buyer",
+    "email": "buyer2@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Bob Buyer",
+    "email": "buyer3@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Emma Buyer",
+    "email": "buyer4@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Tech World",
+    "email": "seller1@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Book Haven",
+    "email": "seller2@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Fashion Hub",
+    "email": "seller3@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  },
+  {
+    "name": "Sports Arena",
+    "email": "seller4@example.com",
+    "password": "$2a$12$KW./I/UHmdQutMiQxB.XpOgruk7ZuXixamUQ.eSZS9MRuMkSWfPiK",
+    "role": "BUYER"
+  }
+]
