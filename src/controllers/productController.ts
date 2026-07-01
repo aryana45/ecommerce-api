@@ -10,7 +10,7 @@ import sharp from 'sharp';
 import cloudinary from '../lib/cloudinary.js';
 
 const multerFilter = (
-  req: Request,
+  _req: Request,
   file: Express.Multer.File,
   cb: FileFilterCallback
 ) => {
@@ -28,7 +28,7 @@ const upload = multer({
 });
 
 export const uploadProductImages = upload.array('images', 5);
-export const uploadToCloudinary = catchAsync(async (req, res, next) => {
+export const uploadToCloudinary = catchAsync(async (req, _res, next) => {
   if (!req.buffers || req.buffers.length === 0) {
     return next();
   }
@@ -55,13 +55,13 @@ export const uploadToCloudinary = catchAsync(async (req, res, next) => {
   next();
 });
 
-export const resizeImageSize = catchAsync(async (req, res, next) => {
+export const resizeImageSize = catchAsync(async (req, _res, next) => {
   const files = req.files as Express.Multer.File[];
   if (!files) {
     return next();
   }
 
-  const images = files.map(async (element, i) => {
+  const images = files.map(async (element) => {
     return await sharp(element.buffer)
       .resize(2000, 1333)
       .toFormat('jpeg')
@@ -73,7 +73,7 @@ export const resizeImageSize = catchAsync(async (req, res, next) => {
   next();
 });
 
-export const createProduct = catchAsync(async (req, res, next) => {
+export const createProduct = catchAsync(async (req, res) => {
   const product = await productService.createProduct(
     req.body,
     req.sellerProfile!.id
@@ -85,7 +85,7 @@ export const createProduct = catchAsync(async (req, res, next) => {
   });
 });
 
-export const getProducts = catchAsync(async (req, res, next) => {
+export const getProducts = catchAsync(async (req, res) => {
   const products = await productService.getProducts(req.query);
   res.status(200).json({
     status: 'success',
@@ -94,7 +94,7 @@ export const getProducts = catchAsync(async (req, res, next) => {
   });
 });
 
-export const getProduct = catchAsync(async (req, res, next) => {
+export const getProduct = catchAsync(async (req, res) => {
   const product = await productService.getProduct(
     (req.params.id as string) ?? ''
   );
@@ -104,7 +104,7 @@ export const getProduct = catchAsync(async (req, res, next) => {
   });
 });
 
-export const updateProduct = catchAsync(async (req, res, next) => {
+export const updateProduct = catchAsync(async (req, res) => {
   const product = await productService.updateProduct(
     req.body,
     (req.params.id as string) ?? '',
@@ -116,7 +116,7 @@ export const updateProduct = catchAsync(async (req, res, next) => {
   });
 });
 
-export const deleteProduct = catchAsync(async (req, res, next) => {
+export const deleteProduct = catchAsync(async (req, res) => {
   await productService.deleteProduct(
     (req.params.id as string) ?? '',
     req.sellerProfile?.id ?? ''

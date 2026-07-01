@@ -31,7 +31,7 @@ export const updateSellerStatus = catchAsync(async (req, res, next) => {
   });
 });
 
-export const getSeller = catchAsync(async (req, res, next) => {
+export const getSeller = catchAsync(async (req, res) => {
   const sellers = await sellerService.getSeller(req.query);
   res.status(200).json({
     status: 'success',
@@ -40,7 +40,7 @@ export const getSeller = catchAsync(async (req, res, next) => {
   });
 });
 
-export const getOneSeller = catchAsync(async (req, res, next) => {
+export const getOneSeller = catchAsync(async (req, res) => {
   const seller = await sellerService.getOneSeller(
     (req.params?.sellerId ?? '') as string
   );

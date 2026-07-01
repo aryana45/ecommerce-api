@@ -1,10 +1,5 @@
 import express from 'express';
-import {
-  protect,
-  protectProductOwnership,
-  protectSeller,
-  restrictTo,
-} from '../middlewares/authMiddleware.js';
+import { protectSeller } from '../middlewares/authMiddleware.js';
 import {
   createProduct,
   deleteProduct,
